@@ -40,6 +40,11 @@ for tweet in new_tweets:
                 if string in tweet.text:
                     msg = ' The Voice of Seren is now active in the ' + string + ' district.'
                     notify(string, urls, msg)
+    elif notif == 'wbs':
+        if now.hour == tweet.create_at.hour:
+            for string in substrings[notif]:
+                if string in tweet.text.lower():
+                    notify(notif, urls, msg)
     else:
         for string in substrings[notif]:
             if string in tweet.text.lower():
