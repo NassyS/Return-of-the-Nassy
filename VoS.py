@@ -26,21 +26,10 @@ new_tweets = api.user_timeline(screen_name = "JagexClock", count=5)
 
 urls = getUrls("vos")
 
+voices = ['amlodd', 'cadarn', 'crwys', 'ithell', 'iorwerth', 'trah', 'meilyr', 'hefin']
+
 for tweet in new_tweets:
     if now.hour == tweet.created_at.hour:
-	if "Amlodd" in tweet.text:
-            notify('amlodd', urls)
-        if "Cadarn" in tweet.text:
-            notify('cadarn', urls)
-        if "Crwys" in tweet.text:
-            notify('crwys', urls)
-	if "Ithell" in tweet.text:
-            notify('ithell', urls)
-        if "Iorwerth" in tweet.text:
-            notify('iorwerth', urls)
-	if "Trah" in tweet.text:
-            notify('trah', urls)
-	if "Meilyr" in tweet.text:
-            notify('meilyr', urls)
-       	if "Hefin" in tweet.text:
-            notify('hefin', urls)
+        for voice in voices:
+            if voice in tweet.text.lower():
+                notify(voice, urls)
