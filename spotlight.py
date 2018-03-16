@@ -4,7 +4,8 @@ import tweepy
 import datetime
 import requests
 import os
-os.chdir('/bin/rsnotif')
+import sys
+os.chdir(sys.path[0])
 from loaders import *
 from notifier import *
 

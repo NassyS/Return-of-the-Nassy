@@ -3,7 +3,7 @@ import os
 import requests
 import sys
 
-os.chdir('/bin/rsnotif')
+os.chdir(sys.path[0])
 
 from notifier import *
 from loaders import *
