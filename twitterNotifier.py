@@ -27,7 +27,7 @@ notif = str(sys.argv[1])
 
 urls = getUrls("vos")
 
-substrings = {'vos': ['amlodd', 'cadarn', 'crwys', 'ithell', 'iorwerth', 'trah', 'meilyr', 'hefin'], 'raven': ['feathers', 'handsome', 'avian'], 'wbs': ['warbands'], 'spotlight': ['spotlight']}
+substrings = {'vos': ['amlodd', 'cadarn', 'crwys', 'ithell', 'iorwerth', 'trahaearn', 'meilyr', 'hefin'], 'raven': ['feathers', 'handsome', 'avian'], 'wbs': ['warbands'], 'spotlight': ['spotlight']}
 
 for tweet in new_tweets:
     if notif == 'wbs' or notif == 'spotlight':
@@ -39,8 +39,8 @@ for tweet in new_tweets:
             for string in substrings[notif]:
                 if string in tweet.text.lower():
                     msg = ' The voice is now active in the ' + string + ' district.'
-                    notify(voice, urls, msg)
+                    notify(string, urls, msg)
     else:
         for string in substrings[notif]:
             if string in tweet.text.lower():
-                notify(voice, urls, msg)
+                notify(string, urls, msg)
