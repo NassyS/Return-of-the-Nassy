@@ -25,9 +25,9 @@ new_tweets = api.user_timeline(screen_name = "JagexClock", count=5)
 
 notif = str(sys.argv[1])
 
-urls = getUrls("vos")
+urls = getUrls(notif)
 
-substrings = {'vos': ['amlodd', 'cadarn', 'crwys', 'ithell', 'iorwerth', 'trahaearn', 'meilyr', 'hefin'], 'raven': ['feathers', 'handsome', 'avian'], 'wbs': ['warbands'], 'spotlight': ['spotlight']}
+substrings = {'vos': ['Amlodd', 'Cadarn', 'Crwys', 'Ithell', 'Iorwerth', 'Trahaearn', 'Meilyr', 'Hefin'], 'raven': ['feathers', 'handsome', 'avian'], 'wbs': ['warbands'], 'spotlight': ['spotlight']}
 
 for tweet in new_tweets:
     if notif == 'wbs' or notif == 'spotlight':
@@ -37,10 +37,10 @@ for tweet in new_tweets:
     if notif == 'vos':
         if now.hour == tweet.created_at.hour:
             for string in substrings[notif]:
-                if string in tweet.text.lower():
-                    msg = ' The voice is now active in the ' + string + ' district.'
+                if string in tweet.text:
+                    msg = ' The Voice of Seren is now active in the ' + string + ' district.'
                     notify(string, urls, msg)
     else:
         for string in substrings[notif]:
             if string in tweet.text.lower():
-                notify(string, urls, msg)
+                notify(notif, urls, msg)
