@@ -27,11 +27,15 @@ notif = str(sys.argv[1])
 
 urls = getUrls(notif)
 
+print urls
+
 substrings = {'vos': ['Amlodd', 'Cadarn', 'Crwys', 'Ithell', 'Iorwerth', 'Trahaearn', 'Meilyr', 'Hefin'], 'raven': ['feathers', 'handsome', 'avian'], 'wbs': ['warbands'], 'spotlight': ['spotlight']}
 
 for tweet in new_tweets:
-    if notif == 'wbs' or notif == 'spotlight':
+    if notif == 'spotlight':
         msg = ' ' + tweet.text
+    if notif == 'wbs':
+        msg = ' Wilderness Warbands will start in 15 minutes.'
     if notif == 'raven':
         msg = ' A raven has spawned in prif!'
     if notif == 'vos':
@@ -41,7 +45,7 @@ for tweet in new_tweets:
                     msg = ' The Voice of Seren is now active in the ' + string + ' district.'
                     notify(string, urls, msg)
     elif notif == 'wbs':
-        if now.hour == tweet.create_at.hour:
+        if now.hour == tweet.created_at.hour:
             for string in substrings[notif]:
                 if string in tweet.text.lower():
                     notify(notif, urls, msg)
