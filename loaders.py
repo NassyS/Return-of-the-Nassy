@@ -25,11 +25,3 @@ def getRoles():
             roleDict[role] = ids
     return roleDict
 
-def getTwitterKeys():
-    with open('keys/twitter.keys') as f:
-        myReader = reader(f)
-        keys = next(myReader)
-    return keys[0], keys[1], keys[2], keys[3]
-
-if __name__ == '__main__':
-    getTwitterAPI()
